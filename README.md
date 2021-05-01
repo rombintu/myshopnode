@@ -17,5 +17,8 @@ npm run start
 ```
 
 ## CLIENT
-### deps
-*
+### install
+```
+npm i
+npm start
+```
