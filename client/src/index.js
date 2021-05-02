@@ -6,7 +6,9 @@ import DeviceStore from './store/DeviceStote';
 import UserStore from './store/UserStore';
 // import reportWebVitals from './reportWebVitals';
 
+
 export const Context = createContext(null)
+
 
 ReactDOM.render(
   <Context.Provider value={{
