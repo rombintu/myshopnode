@@ -6,6 +6,13 @@ import Modal from 'react-bootstrap/Modal'
 
 const CreateDevice = ({show, onHide}) => {
     const {device} = useContext(Context)
+
+    // const [name, setName] = useState('')
+    // const [name, setName] = useState('')
+    // const [name, setName] = useState('')
+    // const [name, setName] = useState('')
+    // const [name, setName] = useState('')
+
     const [info, setInfo] = useState([])
 
     const addInfo = () => {

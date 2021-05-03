@@ -1,34 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 import {Button, Container} from "react-bootstrap"
 import Image from 'react-bootstrap/Image'
 import star_img from '../assets/big-star.png'
+import {useParams} from 'react-router-dom'
+import { fetchOneDevice } from '../http/deviceAPI'
 
 const DevicePage = () => {
     
-    const device = {
-        "id": 4,
-        "name": "12 pro",
-        "price": 99990,
-        "rating": 0,
-        "img": "f4771c53-d4dc-491e-b6c9-426ebdb24bf2.jpg",
-        "createdAt": "2021-05-01T18:16:33.185Z",
-        "updatedAt": "2021-05-01T18:16:33.185Z",
-        "typeId": 2,
-        "brandId": 1
-    }
-    const description = [
-        {id: 1, title: 'Память', description: '5GB'},
-        {id: 2, title: 'Выносливость', description: '10GB'},
-        {id: 3, title: 'Надежность', description: '5GB'},
-        {id: 4, title: 'Переменность', description: '5GB'},
-    ]
+    const [device, setDevices] = useState({info: []})
+    const params = useParams()
+    const {id} = useParams()
+    console.log(params)
+    useEffect(() => {
+        fetchOneDevice(id).then(data => setDevices(data))
+    }, [])
 
     return (
         <Container className="mt-3">
             <Row>
                 <Col md={4}>
-                    <Image width={300} height={300} src={device.img}/>
+                    <Image width={300} height={300} src={process.env.REACT_APP_API_URL + device.img}/>
                 </Col>
                 
                 <Col md={4}>
@@ -57,7 +49,7 @@ const DevicePage = () => {
             </Row>
             <Row className="d-flex flex-column m-3">
                 <h1>Характеристики</h1>
-                {description.map((info, index) => 
+                {device.info.map((info, index) => 
                     <Row key={info.id} style={{background: index % 2 == 0 ? 'lightgray' : 'tranparent', padding: 10}}>
                         {info.title}: {info.description}
                     </Row>

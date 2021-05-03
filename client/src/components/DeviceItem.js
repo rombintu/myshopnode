@@ -14,7 +14,7 @@ const DeviceItem = ({device}) => {
             <Card
                 style={{width: 150, cursor: 'pointer'}}
                 border={'light'}>
-                    <Image widht={150} height={150} src={device.img}/>
+                    <Image widht={150} height={150} src={process.env.REACT_APP_API_URL + device.img}/>
                     <div className="text-black-50 mt-1 d-flex justify-content-between align-items-center">
                         <div>
                             Apple
